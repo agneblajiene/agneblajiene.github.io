@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join the newsletter — Agne B. Lajiene</title>
+<meta name="description" content="Practical guides, honest reflections, and gentle encouragement to start something new. One email a month, no more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- ============================================================
+  HOW TO CONNECT THIS PAGE TO FORMSPREE (response collection)
+  ============================================================
+  1. Create a free account at https://formspree.io
+  2. Click "+ New form", name it "Newsletter", create it.
+  3. Copy the form's endpoint URL — it looks like:
+       https://formspree.io/f/abcdwxyz
+  4. Paste it into the FORMSPREE_ENDPOINT line in the <script>
+     at the bottom of this file, replacing the placeholder.
+  Responses appear in your Formspree dashboard (Submissions tab),
+  with email notifications and CSV export built in.
+  ============================================================ -->
+
+<style>
+  :root{
+    --ink:#14181F;
+    --blaze:#F1591D;
+    --paper:#FAF7F2;
+    --stone:#8C887E;
+    --dust:#4A4E56;
+    --line:#E4DFD6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px 20px;
+  }
+  .card{
+    width:100%;
+    max-width:1040px;
+    background:#fff;
+    display:grid;
+    grid-template-columns:1.05fr 1fr;
+    box-shadow:0 24px 64px rgba(20,24,31,.10);
+  }
+
+  /* ---------- left: story panel ---------- */
+  .story{
+    background:var(--ink);
+    color:var(--paper);
+    padding:56px 52px 44px;
+    display:flex;
+    flex-direction:column;
+  }
+  .mark{margin-bottom:36px}
+  .eyebrow{
+    font-family:'Inter';
+    font-weight:600;
+    font-size:11px;
+    letter-spacing:.16em;
+    line-height:1.9;
+    text-wrap:balance;
+    text-transform:uppercase;
+    color:var(--blaze);
+    margin-bottom:14px;
+  }
+  h1{
+    font-family:'Space Grotesk';
+    font-weight:700;
+    font-size:clamp(30px,3.6vw,40px);
+    line-height:1.12;
+    letter-spacing:-.01em;
+    margin-bottom:22px;
+  }
+  .story p{
+    font-size:15px;
+    line-height:1.7;
+    color:#D8D4CC;
+    margin-bottom:14px;
+  }
+  .story p strong{color:var(--paper);font-weight:600}
+  .cadence{
+    margin-top:auto;
+    padding-top:26px;
+    border-top:1px solid rgba(250,247,242,.14);
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .cadence .n{
+    font-family:'Space Grotesk';
+    font-weight:700;
+    font-size:30px;
+    color:var(--blaze);
+    line-height:1;
+  }
+  .cadence span{
+    font-size:12.5px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--stone);
+    font-weight:600;
+  }
+
+  /* ---------- right: form panel ---------- */
+  .signup{padding:56px 52px 44px;display:flex;flex-direction:column}
+  .signup h2{
+    font-family:'Space Grotesk';
+    font-weight:700;
+    font-size:22px;
+    margin-bottom:26px;
+  }
+  .field{margin-bottom:20px}
+  label{
+    display:block;
+    font-weight:600;
+    font-size:13px;
+    letter-spacing:.02em;
+    margin-bottom:7px;
+  }
+  label .opt{color:var(--stone);font-weight:500}
+  label .req{color:var(--blaze)}
+  input[type=text],
+  input[type=email]{
+    width:100%;
+    padding:13px 14px;
+    font-family:'Inter';
+    font-size:15px;
+    color:var(--ink);
+    background:var(--paper);
+    border:1.5px solid var(--line);
+    border-radius:0;
+    transition:border-color .15s;
+  }
+  input[type=text]:focus,
+  input[type=email]:focus{
+    outline:none;
+    border-color:var(--blaze);
+  }
+  .consent{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    margin:4px 0 26px;
+  }
+  .consent input{
+    appearance:none;
+    flex:0 0 20px;
+    width:20px;height:20px;
+    margin-top:2px;
+    border:1.5px solid var(--stone);
+    background:var(--paper);
+    cursor:pointer;
+    display:grid;
+    place-content:center;
+  }
+  .consent input:checked{
+    background:var(--blaze);
+    border-color:var(--blaze);
+  }
+  .consent input:checked::before{
+    content:"";
+    width:11px;height:11px;
+    clip-path:polygon(14% 46%,0 62%,38% 100%,100% 18%,84% 4%,38% 68%);
+    background:#fff;
+  }
+  .consent input:focus-visible{outline:2px solid var(--blaze);outline-offset:2px}
+  .consent span{font-size:13.5px;line-height:1.55;color:var(--dust)}
+  button{
+    font-family:'Space Grotesk';
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:.03em;
+    color:var(--paper);
+    background:var(--blaze);
+    border:none;
+    padding:16px 20px;
+    width:100%;
+    cursor:pointer;
+    transition:background .15s, transform .1s;
+  }
+  button:hover{background:#D94C13}
+  button:active{transform:translateY(1px)}
+  button:disabled{background:var(--stone);cursor:default}
+  .error{
+    display:none;
+    font-size:13px;
+    font-weight:500;
+    color:#C0330B;
+    margin-top:12px;
+  }
+
+  /* success state */
+  .done{display:none;text-align:left;margin:auto 0}
+  .done svg{margin-bottom:20px}
+  .done h2{margin-bottom:12px}
+  .done p{font-size:15px;color:var(--dust)}
+
+  /* footer / socials */
+  .socials{
+    margin-top:auto;
+    padding-top:28px;
+    border-top:1px solid var(--line);
+    display:flex;
+    gap:22px;
+    flex-wrap:wrap;
+  }
+  .socials a{
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--stone);
+    text-decoration:none;
+    transition:color .15s;
+  }
+  .socials a:hover,.socials a:focus-visible{color:var(--blaze)}
+
+  /* trail draw-on animation */
+  @media (prefers-reduced-motion: no-preference){
+    .trail-path{
+      stroke-dasharray:140;
+      stroke-dashoffset:140;
+      animation:draw 1.4s .3s ease-out forwards;
+    }
+    .trail-arrow{opacity:0;animation:fadein .4s 1.5s ease-out forwards}
+    @keyframes draw{to{stroke-dashoffset:0}}
+    @keyframes fadein{to{opacity:1}}
+  }
+
+  @media (max-width:820px){
+    body{padding:0}
+    .card{grid-template-columns:1fr;box-shadow:none}
+    .story,.signup{padding:44px 28px 36px}
+    .cadence{margin-top:28px}
+  }
+</style>
+</head>
+<body>
+
+<main class="card">
+
+  <!-- ================= STORY ================= -->
+  <section class="story">
+    <div class="mark" aria-hidden="true">
+      <svg width="190" height="40" viewBox="0 0 190 40" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8"  cy="23" r="2.6" fill="#4A4E56"/>
+        <circle cx="24" cy="14" r="2.2" fill="#4A4E56"/>
+        <circle cx="39" cy="26" r="2.9" fill="#8C887E"/>
+        <circle cx="56" cy="19" r="3.2" fill="#FAF7F2"/>
+        <path class="trail-path" d="M70 21 C 95 12, 125 30, 158 15" fill="none" stroke="#F1591D" stroke-width="4" stroke-linecap="round"/>
+        <path class="trail-arrow" d="M148 9 L 161 13.5 L 153 24" fill="none" stroke="#F1591D" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <p class="eyebrow">One step at a time.<br>Because every beginning starts somewhere.</p>
+    <h1>Join the newsletter</h1>
+
+    <p><strong>Hi, I'm Agne.</strong></p>
+    <p>I believe beginnings are possible at any age and from any starting point. I discovered the mountains as an adult, started triathlon and open-water swimming after 40, and I'm still adding new challenges to the list.</p>
+    <p>Professionally, I design programs and help organizations structure new beginnings. In my own life, I apply the same discipline: understand the context, prepare well, and take the first step. I love discovering new places, learning new skills, and challenging myself. I share what I learn along the way in the hope that it makes someone else's beginning a little easier.</p>
+    <p>If you enjoy practical guides, honest reflections, and gentle encouragement to start something new, I'd love to stay in touch.</p>
+
+    <div class="cadence">
+      <span class="n">1</span>
+      <span>email a month — no more</span>
+    </div>
+  </section>
+
+  <!-- ================= SIGN UP ================= -->
+  <section class="signup">
+
+    <form id="signupForm" novalidate>
+      <h2>Sign up</h2>
+
+      <div class="field">
+        <label for="fname">Name <span class="opt">(optional)</span></label>
+        <input type="text" id="fname" name="fname" autocomplete="name">
+      </div>
+
+      <div class="field">
+        <label for="email">Email address <span class="req">*</span></label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+      </div>
+
+      <div class="field">
+        <label for="country">Country <span class="opt">(optional)</span></label>
+        <input type="text" id="country" name="country" autocomplete="country-name">
+      </div>
+
+      <label class="consent">
+        <input type="checkbox" id="consent" required>
+        <span>I'd like to receive occasional emails (no more than once a month) with ideas, guides, and stories that inspire new beginnings.</span>
+      </label>
+
+      <button type="submit" id="submitBtn">Join the journey</button>
+      <p class="error" id="errorMsg">Please add your email address and tick the box above.</p>
+    </form>
+
+    <div class="done" id="doneState">
+      <svg width="64" height="30" viewBox="0 0 64 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="4" cy="17" r="2" fill="#8C887E"/>
+        <circle cx="13" cy="11" r="1.7" fill="#8C887E"/>
+        <path d="M20 16 C 30 9, 42 22, 56 11" fill="none" stroke="#F1591D" stroke-width="3.4" stroke-linecap="round"/>
+        <path d="M48 6 L 58 9.5 L 52 18" fill="none" stroke="#F1591D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h2>You've joined the journey.</h2>
+      <p>Thank you — your first email will arrive with the next monthly send. Until then, happy beginnings.</p>
+    </div>
+
+    <nav class="socials" aria-label="Find me elsewhere">
+      <a href="https://www.strava.com/athletes/87533008" target="_blank" rel="noopener">Strava</a>
+      <a href="https://www.instagram.com/agne9680/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/in/agne-balkeviciute-lajiene/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+
+  </section>
+</main>
+
+<script>
+/* ============================================================
+   PASTE YOUR FORMSPREE ENDPOINT HERE (see the comment block
+   in <head> for how to get it — it takes about two minutes).
+   ============================================================ */
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xvkpoowg";
+
+const form = document.getElementById("signupForm");
+const btn = document.getElementById("submitBtn");
+const err = document.getElementById("errorMsg");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = document.getElementById("email").value.trim();
+  const consent = document.getElementById("consent").checked;
+
+  if (!email || !/.+@.+\..+/.test(email) || !consent) {
+    err.style.display = "block";
+    return;
+  }
+  err.style.display = "none";
+  btn.disabled = true;
+  btn.textContent = "Joining…";
+
+  const data = new FormData();
+  data.append("name",    document.getElementById("fname").value.trim());
+  data.append("email",   email);
+  data.append("country", document.getElementById("country").value.trim());
+  data.append("consent", "Yes — occasional emails, no more than once a month");
+  data.append("_subject", "New newsletter signup");
+
+  try {
+    const res = await fetch(FORMSPREE_ENDPOINT, {
+      method: "POST",
+      body: data,
+      headers: { "Accept": "application/json" }
+    });
+    if (!res.ok) throw new Error("bad response");
+    form.style.display = "none";
+    document.getElementById("doneState").style.display = "block";
+  } catch (_) {
+    btn.disabled = false;
+    btn.textContent = "Join the journey";
+    err.textContent = "Something didn't go through. Please try once more.";
+    err.style.display = "block";
+  }
+});
+</script>
+
+</body>
+</html>
