@@ -273,7 +273,7 @@
 
     <div class="cadence">
       <span class="n">1</span>
-      <span>email a month — no more</span>
+      <span>email a quarter — no more</span>
     </div>
   </section>
 
@@ -300,7 +300,7 @@
 
       <label class="consent">
         <input type="checkbox" id="consent" required>
-        <span>I'd like to receive occasional emails (no more than once a month) with ideas, guides, and stories that inspire new beginnings.</span>
+        <span>I'd like to receive occasional emails (no more than once a quarter) with ideas, guides, and stories that inspire new beginnings.</span>
       </label>
 
       <button type="submit" id="submitBtn">Join the journey</button>
@@ -315,7 +315,7 @@
         <path d="M48 6 L 58 9.5 L 52 18" fill="none" stroke="#F1591D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <h2>You've joined the journey.</h2>
-      <p>Thank you — your first email will arrive with the next monthly send. Until then, happy beginnings.</p>
+      <p>Thank you — your first email will arrive with the next quarterly send. Until then, happy beginnings.</p>
     </div>
 
     <nav class="socials" aria-label="Find me elsewhere">
@@ -355,7 +355,7 @@ form.addEventListener("submit", async (e) => {
   data.append("name",    document.getElementById("fname").value.trim());
   data.append("email",   email);
   data.append("country", document.getElementById("country").value.trim());
-  data.append("consent", "Yes — occasional emails, no more than once a month");
+  data.append("consent", "Yes — occasional emails, no more than once a quarter");
   data.append("_subject", "New newsletter signup");
 
   try {
